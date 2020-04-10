@@ -1,5 +1,7 @@
 from picamera import PiCamera
 import sys
+import subprocess
+from astral_calculator import *
 
 # the Picamera
 camera = PiCamera()
@@ -20,11 +22,12 @@ def the_camera(no_of_frames, delay=8):
         sleep(delay)
 
 if __name__ == "__main__":
-    print(f"Staring to take {number_of_snaps} photos!")
-    the_camera(number_of_snaps)
-    print("Finished")
-
-    
-
-
+    try:
+        print(f"Staring to take {number_of_snaps} photos!")
+        the_camera(number_of_snaps)
+        print("Finished")
+    finally:
+        sunrise, total_frames = start_time()
+        cron_update(sunrise, total_frames)
+        print(f"Fin - Sunrise @ {sunrise}, Total Frames = {total_frames}")
 
