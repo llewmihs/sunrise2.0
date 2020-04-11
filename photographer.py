@@ -2,16 +2,11 @@ from picamera import PiCamera
 import sys
 import subprocess
 from astral_calculator import *
+from sunny_conf import *
 
 # the Picamera
 camera = PiCamera()
 camera.resolution = (3280, 2464)
-
-if len(sys.argv) > 1:
-    number_of_snaps = int(sys.argv[1])
-else:
-    print("No additional arguments, exiting")
-    exit
 
 def the_camera(no_of_frames, delay=8):
     camera.start_preview()
@@ -20,14 +15,11 @@ def the_camera(no_of_frames, delay=8):
         file_path = "/home/pi/sunrise2.0/images/" + 'IMAGE_' '{0:04d}'.format(i)+".JPG"
         camera.capture(file_path)
         sleep(delay)
+    subprocess.call("touch /home/pi/sunrise2.0/images/end.txt", shell=True)
 
 if __name__ == "__main__":
-    try:
-        print(f"Staring to take {number_of_snaps} photos!")
-        the_camera(number_of_snaps)
-        print("Finished")
-    finally:
-        sunrise, total_frames = start_time()
-        cron_update(sunrise, total_frames)
-        print(f"Fin - Sunrise @ {sunrise}, Total Frames = {total_frames}")
+    print(f"Staring to take {fpd} photos!")
+    the_camera(fpd)
+    print("Finished")
+
 
