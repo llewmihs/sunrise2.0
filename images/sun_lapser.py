@@ -22,7 +22,7 @@ if __name__ == "__main__":
             # move the files into a new folder:
             for i in list_of_files:
                 filename = i[27:]
-                subprocess.call(f"mv {i} /home/pi/sunrise2.0/sunrises/{filename}") ### what is i??
+                subprocess.call(f"cp {i} /home/pi/sunrise2.0/sunrises/{filename}") ### what is i??
             # run ffmpeg to create the video file
             video_filename = strftime("%d-%b-sunrise.mp4")
             subprocess.call(f"/usr/local/bin/ffmpeg -y -r 30 -f image2 -start_number 0000 -i /home/pi/sunrise2.0/sunrises/IMAGE_%04d.JPG -vcodec libx264 -preset slow -crf 17 {video_filename}",shell = True)
