@@ -8,6 +8,9 @@ from astral.sun import sun          # to get the sunrise time
 from crontab import CronTab
 from datetime import datetime, timedelta
 import subprocess   
+from creds import *
+from pushbullet import Pushbullet   # notification software to monitor the programme remotely `pip3 install pushbullet.py`
+pb = Pushbullet(PUSHBULLET)
 
 def start_time():
     # set Astral location for Whitley Bay

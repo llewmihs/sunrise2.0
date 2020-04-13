@@ -2,7 +2,10 @@ from picamera import PiCamera
 import sys
 import subprocess
 from sunny_conf import *
+from creds import *
 from time import sleep
+from pushbullet import Pushbullet   # notification software to monitor the programme remotely `pip3 install pushbullet.py`
+pb = Pushbullet(PUSHBULLET)
 
 # the Picamera
 camera = PiCamera()
@@ -25,6 +28,7 @@ def the_camera(no_of_frames, delay=8):
 if __name__ == "__main__":
     clean_up()
     print(f"Staring to take {fpd} photos!")
+    push = pb.push_note("Today's Photographer Has Started", f"Total frames: {fpd}. Delay: 8.")
     the_camera(fpd)
     print("Finished")
 

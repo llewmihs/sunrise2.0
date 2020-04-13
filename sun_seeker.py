@@ -6,6 +6,9 @@ from glob import glob
 from sunny_conf import fpd
 from time import sleep, strftime
 import os
+from creds import *
+from pushbullet import Pushbullet   # notification software to monitor the programme remotely `pip3 install pushbullet.py`
+pb = Pushbullet(PUSHBULLET)
 
 sunrise_watch_file = '/home/pi/sunrise2.0/images/IMAGE_0449.JPG'
 days_end_file = '/home/pi/sunrise2.0/images/end.txt'

@@ -8,6 +8,9 @@ from glob import glob # this allows us to get the files from a folder
 import os # os module will help glob to check for the newest file
 import subprocess # this will allow us to call copy, and fmmpeg commands from the terminal
 from time import sleep, strftime
+from creds import *
+from pushbullet import Pushbullet   # notification software to monitor the programme remotely `pip3 install pushbullet.py`
+pb = Pushbullet(PUSHBULLET)
 
 # set the folder path to watch
 watch_folder = "/home/pi/sunrise2.0/images/"      # this is for the Pi Version
