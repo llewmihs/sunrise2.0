@@ -39,4 +39,5 @@ def update(sunrise, total_frames):
 if __name__ == "__main__":
     sunrise, total_frames = start_time()
     update(sunrise, total_frames)
+    push = pb.push_note("Setup Complete", f"Total frames: {fpd}. Time: {sunrise}.")
     print(f"Fin - Sunrise @ {sunrise}, Total Frames = {total_frames}")
