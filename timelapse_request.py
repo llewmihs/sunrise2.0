@@ -55,7 +55,8 @@ def copy_images(watch_folder, first_image_num, last_image_num):
 def ffmpeg(first_image_num, lapse_folder = "/home/pi/sunrise2.0/timelapses/"):
     filename = strftime("%d-%b-%h-%M timelapse.mp4")
     subprocess.call(f"/usr/local/bin/ffmpeg -y -r 30 -f image2 -start_number {first_image_num::04d} -i /home/pi/sunrise2.0/userlapse/IMAGE_%04d.JPG -vcodec libx264 -preset slow -crf 17 {lapse_folder}{filename}",shell = True)
-
+    scp_copy(filename, password, localpath)
+    
 if __name__ == "__main__":
     first_file_name, final_file_name, first_num, final_num = edge_finder(watch_folder)
     file_waiter(final_file_name, watch_folder)
