@@ -16,7 +16,7 @@ def sunset_start(fpd):
     return file_num
 
 def file_most_recent():
-    list_of_files = glob('/home/pi/sunrise2.0/images/*.JPG')
+    list_of_files = glob('/home/pi/sunrise2.0/images/*')
     latest_file = max(list_of_files, key=os.path.getctime)
     return latest_file, list_of_files
 
