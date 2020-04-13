@@ -25,7 +25,7 @@ def message(client, feed_id, payload):
     # the new value.
     print('Feed {0} received new value: {1}'.format(feed_id, payload))
     push = pb.push_note("Somebody pushed", "the button")
-    #subprocess.call(f"python3 sunrise3000.py 15", shell=True)
+    subprocess.call(f"python3 timelapse_request.py", shell=True)
     print("Worked?")
 
 # Create an MQTT client instance.
