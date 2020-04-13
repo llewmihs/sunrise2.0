@@ -45,6 +45,7 @@ if __name__ == "__main__":
                 filename = i[27:]
                 subprocess.call(f"cp {i} /home/pi/sunrise2.0/sunrise/{filename}", shell=True)
             ffmpeger(0)
+            sleep(10)
         elif latest_file == days_end_file:
             print("Ding Dong - SUNSET cooked")
             first_image = fpd-450
