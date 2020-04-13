@@ -13,6 +13,9 @@ from time import sleep, strftime
 watch_folder = "/home/pi/sunrise2.0/images/"      # this is for the Pi Version
 #watch_folder = ""
 
+# start with a deep clean!
+subprocess.call("rm -r /home/pi/sunrise2.0/userlapse/*", shell=True)
+
 # define a function to calculate the start and end files
 def edge_finder(watch_folder):
     all_files = glob(watch_folder+"*.JPG")  #create a list containing all JPG files

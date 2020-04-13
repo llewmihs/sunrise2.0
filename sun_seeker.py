@@ -26,7 +26,7 @@ def ffmpeger(first_image):
         start_file = "0000"
         folder = "sunrise"
     else:
-        print("Sunset timelapes")
+        print("Sunset timelapse")
         start_file = str(first_image)
         folder = "sunset"
     day = strftime("%d-%b")
