@@ -8,6 +8,9 @@ from time import sleep
 camera = PiCamera()
 camera.resolution = (3280, 2464)
 
+def clean_up():
+    subprocess.call("rm -r /home/pi/sunrise2.0/images/*", shell=True)
+
 def the_camera(no_of_frames, delay=8):
     camera.start_preview()
     sleep(2) # Camera warm-up time
@@ -18,6 +21,7 @@ def the_camera(no_of_frames, delay=8):
     subprocess.call("touch /home/pi/sunrise2.0/images/end.txt", shell=True)
 
 if __name__ == "__main__":
+    clean_up()
     print(f"Staring to take {fpd} photos!")
     the_camera(fpd)
     print("Finished")
