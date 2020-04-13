@@ -11,6 +11,7 @@ from time import sleep, strftime
 from creds import *
 from pushbullet import Pushbullet   # notification software to monitor the programme remotely `pip3 install pushbullet.py`
 pb = Pushbullet(PUSHBULLET)
+from lapse_uploader import *
 
 # set the folder path to watch
 watch_folder = "/home/pi/sunrise2.0/images/"      # this is for the Pi Version

@@ -9,6 +9,7 @@ import os
 from creds import *
 from pushbullet import Pushbullet   # notification software to monitor the programme remotely `pip3 install pushbullet.py`
 pb = Pushbullet(PUSHBULLET)
+from lapse_uploader import *
 
 sunrise_watch_file = '/home/pi/sunrise2.0/images/IMAGE_0449.JPG'
 days_end_file = '/home/pi/sunrise2.0/images/end.txt'
@@ -35,6 +36,7 @@ def ffmpeger(first_image):
     day = strftime("%d-%b")
     video_filename = f"/home/pi/sunrise2.0/timelapses/{day}-{folder}.mp4"
     subprocess.call(f"/usr/local/bin/ffmpeg -y -r 30 -f image2 -start_number {start_file} -i /home/pi/sunrise2.0/{folder}/IMAGE_%04d.JPG -vcodec libx264 -preset slow -crf 17 {video_filename}",shell = True)
+    scp_copy(video_filename, password, localpath)
     
 
 if __name__ == "__main__":

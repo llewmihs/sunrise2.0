@@ -13,7 +13,7 @@ camera.resolution = (3280, 2464)
 
 def clean_up():
     subprocess.call("rm -r /home/pi/sunrise2.0/images/*", shell=True)
-    subprocess.call("rm -r /home/pi/sunrise2.0/sunset/*", shell=True)
+    subprocess.call("rm -r /home/pi/sunrise2.0/sunset/*", shell=True)s
     subprocess.call("rm -r /home/pi/sunrise2.0/sunrise/*", shell=True)
 
 def the_camera(no_of_frames, delay=8):
@@ -27,7 +27,7 @@ def the_camera(no_of_frames, delay=8):
 
 if __name__ == "__main__":
     clean_up()
-    print(f"Staring to take {fpd} photos!")
+    print(f"Starting to take {fpd} photos!")
     push = pb.push_note("Today's Photographer Has Started", f"Total frames: {fpd}. Delay: 8.")
     the_camera(fpd)
     print("Finished")
