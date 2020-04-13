@@ -11,4 +11,3 @@ def scp_copy(filename, password, localpath):
 
 if __name__ == "__main__":
     scp_copy(filename, password, localpath)
-    push = pb.push_note("Job Done", "Timelapse Uploaded")
