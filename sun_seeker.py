@@ -39,6 +39,7 @@ if __name__ == "__main__":
     print("Sun Seeker is monitoring folders for files...")
     while running:
         latest_file, list_of_files = file_most_recent()
+        print(latest_file)
         if latest_file == sunrise_watch_file:
             print("Ding Dong - SUNRISE cooked")
             for i in list_of_files:
