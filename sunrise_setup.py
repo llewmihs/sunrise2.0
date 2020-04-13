@@ -23,8 +23,8 @@ def start_time():
 
 def update(sunrise, total_frames):
     my_cron = CronTab(user='pi')
-    my_cron.remove_all(comment='foo')
-    job = my_cron.new(command=f'cd /home/pi/sunrise300 && python3 photographer.py', comment='foo')
+    my_cron.remove_all(comment='bar')
+    job = my_cron.new(command=f'cd /home/pi/sunrise300 && python3 photographer.py', comment='bar')
     job.hour.on(sunrise.hour)
     job.minute.on(sunrise.minute)
     my_cron.write() #write the job to the crontab
