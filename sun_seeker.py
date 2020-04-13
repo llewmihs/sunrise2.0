@@ -11,6 +11,8 @@ from pushbullet import Pushbullet   # notification software to monitor the progr
 pb = Pushbullet(PUSHBULLET)
 from lapse_uploader import *
 
+push = pb.push_note("Sun_Seeker.py running", "Well done")
+
 sunrise_watch_file = '/home/pi/sunrise2.0/images/IMAGE_0449.JPG'
 days_end_file = '/home/pi/sunrise2.0/images/end.txt'
 
@@ -46,6 +48,7 @@ if __name__ == "__main__":
         latest_file, list_of_files = file_most_recent()
         print(latest_file)
         if latest_file == sunrise_watch_file:
+            push = pb.push_note("Sunrise Completed", "Ready for the work")
             print("Ding Dong - SUNRISE cooked")
             for i in list_of_files:
                 filename = i[27:]
@@ -53,6 +56,7 @@ if __name__ == "__main__":
             ffmpeger(0)
             sleep(10)
         elif latest_file == days_end_file:
+            push = pb.push_note("Sunset Completed", "Ready for the work")
             print("Ding Dong - SUNSET cooked")
             first_image = fpd-450
             for i in range(450):
