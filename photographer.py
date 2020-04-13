@@ -1,7 +1,6 @@
 from picamera import PiCamera
 import sys
 import subprocess
-from astral_calculator import *
 from sunny_conf import *
 from time import sleep
 
