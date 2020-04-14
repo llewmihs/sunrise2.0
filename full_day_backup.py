@@ -4,7 +4,7 @@ from time import strftime
 from glob import glob
 
 full_file_list = glob("/home/pi/sunrise2.0/images/*.JPG")
-folder_name = strftime("/%d-%b-%Y/")
+folder_name = strftime("/imagecache/%d-%b-%Y-")
 
 for i in full_file_list:
     subprocess.call(f"sshpass -p {password} scp {i} {localpath}{folder_name}{i[-8:]}", shell = True)
