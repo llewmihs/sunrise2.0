@@ -15,6 +15,7 @@ def clean_up():
     subprocess.call("rm -r /home/pi/sunrise2.0/images/*", shell=True)
     subprocess.call("rm -r /home/pi/sunrise2.0/sunset/*", shell=True)
     subprocess.call("rm -r /home/pi/sunrise2.0/sunrise/*", shell=True)
+    subprocess.call("rm -r /home/pi/sunrise2.0/timelapses/*", shell=True)
 
 def the_camera(no_of_frames, delay=8):
     camera.start_preview()

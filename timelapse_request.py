@@ -25,7 +25,7 @@ subprocess.call("rm -r /home/pi/sunrise2.0/userlapse/*", shell=True)
 # define a function to calculate the start and end files
 def edge_finder(watch_folder):
     all_files = glob(watch_folder+"*.JPG")  #create a list containing all JPG files
-    latest_file = max(all_files, key=os.path.getctime)  # find the most recent file
+    latest_file = max(all_files, key=os.path.getctime)  # find the most recendt file
     # take the final 4 digits of the filenumber
     latest_file_num = latest_file[33:-4]      # this is for the Pi Version
     #latest_file_num = latest_file[6:-4]
