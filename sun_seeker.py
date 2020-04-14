@@ -23,7 +23,10 @@ def sunset_start(fpd):
 
 def file_most_recent():
     list_of_files = glob('/home/pi/sunrise2.0/images/*')
-    latest_file = max(list_of_files, key=os.path.getctime)
+    try:
+        latest_file = max(list_of_files, key=os.path.getctime)
+    except:
+        latest_file = "nofiles"
     return latest_file, list_of_files
 
 def ffmpeger(first_image):
