@@ -31,9 +31,8 @@ def message(client, feed_id, payload):
     # the new value.
     print('Feed {0} received new value: {1}'.format(feed_id, payload))
     newest_file = file_most_recent()
-    push = pb.push_note(f"Most recent file {newest_file}", "Ta Da!")
+    push = pb.push_note(f"{newest_file}", "Ta Da!")
     #subprocess.call(f"python3 timelapse_request.py", shell=True)
-    print("Worked?")
 
 # Create an MQTT client instance.
 client = MQTTClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
