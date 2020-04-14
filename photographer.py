@@ -13,7 +13,7 @@ camera.resolution = (3280, 2464)
 
 def clean_up():
     subprocess.call("rm -r /home/pi/sunrise2.0/images/*", shell=True)
-    subprocess.call("rm -r /home/pi/sunrise2.0/sunset/*", shell=True)s
+    subprocess.call("rm -r /home/pi/sunrise2.0/sunset/*", shell=True)
     subprocess.call("rm -r /home/pi/sunrise2.0/sunrise/*", shell=True)
 
 def the_camera(no_of_frames, delay=8):
