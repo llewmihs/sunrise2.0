@@ -13,7 +13,7 @@ from lapse_uploader import *
 
 push = pb.push_note("Sun_Seeker.py running", "Well done")
 
-sunrise_watch_file = '/home/pi/sunrise2.0/images/IMAGE_0449.JPG'
+sunrise_watch_file = '/home/pi/sunrise2.0/images/IMAGE_0599.JPG'
 days_end_file = '/home/pi/sunrise2.0/images/end.txt'
 
 # sunset start file
