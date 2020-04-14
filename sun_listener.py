@@ -32,7 +32,7 @@ def message(client, feed_id, payload):
     print('Feed {0} received new value: {1}'.format(feed_id, payload))
     newest_file = file_most_recent()
     with open(newest_file, "rb") as pic:
-        file_data = pb.upload_file(pic, "picture.jpg")
+        file_data = pb.upload_file(pic, newest_file)
     push = pb.push_file(**file_data)
     #subprocess.call(f"python3 timelapse_request.py", shell=True)
 
