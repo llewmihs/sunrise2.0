@@ -66,7 +66,7 @@ if __name__ == "__main__":
             for i in range(450):
                 current_filepath = "/home/pi/sunrise2.0/images/IMAGE_" + str(first_image + i) + ".JPG"
                 current_filename = "IMAGE_" + str(first_image + i) + ".JPG"
-                subprocess.call(f"cp {current_filepath} /home/pi/home/pi/sunrise2.0/sunset/{current_filename}", shell=True)
+                subprocess.call(f"cp {current_filepath} /home/pi/sunrise2.0/sunset/{current_filename}", shell=True)
             ffmpeg_first_number = first_image
             ffmpeger(ffmpeg_first_number)
             running = False
