@@ -31,7 +31,9 @@ def message(client, feed_id, payload):
     # the new value.
     print('Feed {0} received new value: {1}'.format(feed_id, payload))
     newest_file = file_most_recent()
-    push = pb.push_note(f"{newest_file}", "Ta Da!")
+    with open(newest_file, "rb") as pic:
+        file_data = pb.upload_file(pic, "picture.jpg")
+    push = pb.push_file(**file_data)
     #subprocess.call(f"python3 timelapse_request.py", shell=True)
 
 # Create an MQTT client instance.
