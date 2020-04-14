@@ -1,5 +1,5 @@
 import subprocess # to run file cleanup after the upload
-from config import *    # my dropbox API key and Push bullet API key
+from creds import *    # my dropbox API key and Push bullet API key
 from time import strftime
 from glob import glob
 
