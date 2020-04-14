@@ -40,6 +40,7 @@ def ffmpeger(first_image):
         folder = "sunset"
     day = strftime("%d-%b")
     video_filename = f"/home/pi/sunrise2.0/timelapses/{day}-{folder}.mp4"
+    push = pb.push_note("Running FFMPEG", "Well done")
     subprocess.call(f"/usr/local/bin/ffmpeg -y -r 30 -f image2 -start_number {start_file} -i /home/pi/sunrise2.0/{folder}/IMAGE_%04d.JPG -vcodec libx264 -preset slow -crf 17 {video_filename}",shell = True)
     scp_copy(video_filename, password, localpath)
     
