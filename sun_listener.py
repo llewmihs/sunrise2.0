@@ -3,8 +3,14 @@ from Adafruit_IO import MQTTClient
 from creds import *
 import subprocess # to run file cleanup after the upload
 from pushbullet import Pushbullet
-
+from glob import glob
+import os
 pb = Pushbullet(PUSHBULLET)
+
+def file_most_recent():
+    list_of_files = glob('/home/pi/sunrise2.0/images/*')
+    latest_file = max(list_of_files, key=os.path.getctime)
+    return latest_file
 
 # Define callback functions which will be called when certain events happen.
 def connected(client):
@@ -24,7 +30,8 @@ def message(client, feed_id, payload):
     # The feed_id parameter identifies the feed, and the payload parameter has
     # the new value.
     print('Feed {0} received new value: {1}'.format(feed_id, payload))
-    push = pb.push_note("Somebody pushed", "the button")
+    newest_file = file_most_recent()
+    push = pb.push_note(f"Most recent file {newest_file}", "Ta Da!")
     #subprocess.call(f"python3 timelapse_request.py", shell=True)
     print("Worked?")
 
