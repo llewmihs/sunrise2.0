@@ -11,6 +11,6 @@ def watcher():
         subprocess.call(f"rm -r {i}", shell=True)
 
 if __name__ == "__main__":
-    while True
+    while True:
         sleep(30)
         watcher()
