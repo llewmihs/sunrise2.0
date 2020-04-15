@@ -13,16 +13,16 @@ from lapse_uploader import *
 
 push = pb.push_note("Sun_Seeker.py running", "Well done")
 
-sunrise_watch_file = '/home/pi/sunrise2.0/images/IMAGE_0599.JPG'
-days_end_file = '/home/pi/sunrise2.0/images/end.txt'
+sunrise_watch_file = '/mnt/myDisk/dayimages/IMAGE_0599.JPG'
+days_end_file = '/mnt/myDisk/dayimages/end.txt'
 
 # sunset start file
 def sunset_start(fpd):
-    file_num = "/home/pi/sunrise2.0/images/IMAGE_" + str(fpd-450) + ".JPG"
+    file_num = "/mnt/myDisk/dayimages/IMAGE_" + str(fpd-450) + ".JPG"
     return file_num
 
 def file_most_recent():
-    list_of_files = glob('/home/pi/sunrise2.0/images/*')
+    list_of_files = glob('/mnt/myDisk/dayimages/*')
     try:
         latest_file = max(list_of_files, key=os.path.getctime)
     except:
@@ -39,9 +39,9 @@ def ffmpeger(first_image):
         start_file = str(first_image)
         folder = "sunset"
     day = strftime("%d-%b")
-    video_filename = f"/home/pi/sunrise2.0/timelapses/{day}-{folder}.mp4"
+    video_filename = f"/mnt/myDisk/timelapses/{day}-{folder}.mp4"
     push = pb.push_note("Running FFMPEG", "Well done")
-    subprocess.call(f"/usr/local/bin/ffmpeg -y -r 30 -f image2 -start_number {start_file} -i /home/pi/sunrise2.0/{folder}/IMAGE_%04d.JPG -vcodec libx264 -preset slow -crf 17 {video_filename}",shell = True)
+    subprocess.call(f"/usr/local/bin/ffmpeg -y -r 30 -f image2 -start_number {start_file} -i /mnt/myDisk/{folder}/IMAGE_%04d.JPG -vcodec libx264 -preset slow -crf 17 {video_filename}",shell = True)
     scp_copy(video_filename, password, localpath)
     
 
@@ -55,8 +55,8 @@ if __name__ == "__main__":
             push = pb.push_note("Sunrise Completed", "Ready for the work")
             print("Ding Dong - SUNRISE cooked")
             for i in list_of_files:
-                filename = i[27:]
-                subprocess.call(f"cp {i} /home/pi/sunrise2.0/sunrise/{filename}", shell=True)
+                filename = i[22:]
+                subprocess.call(f"cp {i} /mnt/myDisk/sunrise/{filename}", shell=True)
             ffmpeger(0)
             sleep(10)
         elif latest_file == days_end_file:
@@ -66,7 +66,7 @@ if __name__ == "__main__":
             for i in range(450):
                 current_filepath = "/home/pi/sunrise2.0/images/IMAGE_" + str(first_image + i) + ".JPG"
                 current_filename = "IMAGE_" + str(first_image + i) + ".JPG"
-                subprocess.call(f"cp {current_filepath} /home/pi/sunrise2.0/sunset/{current_filename}", shell=True)
+                subprocess.call(f"cp {current_filepath} /mnt/myDisk/sunrise/{current_filename}", shell=True)
             ffmpeg_first_number = first_image
             ffmpeger(ffmpeg_first_number)
             running = False

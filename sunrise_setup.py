@@ -18,8 +18,8 @@ def start_time():
      # get tomorrow's sunrise time
     s = sun(city.observer, date=datetime.date(datetime.now()))
     # timelapse shoudl start 1 hour prior
-    sunrise = s['sunrise'] + timedelta(minutes=20)
-    sunset = s['sunset'] + timedelta(minutes=80)
+    sunrise = s['sunrise']
+    sunset = s['sunset'] + timedelta(minutes=12)
     day_length = int((sunset - sunrise).total_seconds())
     total_frames = int(day_length/8)
     return sunrise, total_frames
