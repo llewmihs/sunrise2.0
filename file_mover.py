@@ -4,7 +4,7 @@ from time import strftime, sleep
 from glob import glob
 
 def watcher():
-    full_file_list = glob("/home/pi/sunrise2.0/images/*.JPG")
+    full_file_list = glob("/home/pi/sunrise2.0/images/*")
     folder_name = strftime("/dayimages/")
     for i in full_file_list:
         subprocess.call(f"sshpass -p {password} scp {i} {localpath}{folder_name}{i[27:]}", shell = True)
