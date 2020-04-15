@@ -8,7 +8,7 @@ import os
 pb = Pushbullet(PUSHBULLET)
 
 def file_most_recent():
-    list_of_files = glob('/home/pi/sunrise2.0/images/*')
+    list_of_files = glob('/mnt/myDisk/shared/dayimages/*')
     latest_file = max(list_of_files, key=os.path.getctime)
     return latest_file
 
