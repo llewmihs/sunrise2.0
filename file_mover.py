@@ -7,8 +7,9 @@ def watcher():
     full_file_list = sorted(glob("/home/pi/sunrise2.0/images/*"))
     folder_name = strftime("/dayimages/")
     for i in full_file_list:
-        subprocess.call(f"sshpass -p {password} scp {i} {localpath}{folder_name}{i[27:]}", shell = True)
-        subprocess.call(f"rm -r {i}", shell=True)
+        success = subprocess.call(f"sshpass -p {password} scp {i} {localpath}{folder_name}{i[27:]}", shell = True)
+        if success == 0:
+            subprocess.call(f"rm -r {i}", shell=True)
 
 if __name__ == "__main__":
     while True:
