@@ -36,7 +36,7 @@ def update(sunrise, total_frames):
     subprocess.call(f"echo fpd=900>> sunny_conf.py", shell=True)
 
 
-if __name__ == "__main__"
+if __name__ == "__main__":
     sunrise, total_frames = start_time()
     update(sunrise, total_frames)
     push = pb.push_note("Setup Complete", f"Total frames: {total_frames}. Time: {sunrise}.")
