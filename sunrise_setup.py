@@ -19,7 +19,7 @@ def start_time():
     s = sun(city.observer, date=datetime.date(datetime.now()))
     # timelapse shoudl start 1 hour prior
     sunrise = s['sunrise']
-    sunset = s['sunset'] + timedelta(minutes=12)
+    sunset = s['sunset'] + timedelta(minutes=30)
     day_length = int((sunset - sunrise).total_seconds())
     total_frames = int(day_length/8)
     return sunrise, total_frames
@@ -33,10 +33,10 @@ def update(sunrise, total_frames):
     my_cron.write() #write the job to the crontab
     #delete the previous day's config file
     subprocess.call("rm -r sunny_conf.py", shell=True)
-    subprocess.call(f"echo fpd={total_frames}>> sunny_conf.py", shell=True)
+    subprocess.call(f"echo fpd=900>> sunny_conf.py", shell=True)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__"
     sunrise, total_frames = start_time()
     update(sunrise, total_frames)
     push = pb.push_note("Setup Complete", f"Total frames: {total_frames}. Time: {sunrise}.")
