@@ -21,7 +21,15 @@ def the_camera(no_of_frames, delay=8):
     camera.start_preview()
     sleep(2) # Camera warm-up time
     for i in range(no_of_frames):
-        file_path = "/home/pi/sunrise2.0/images/" + 'IMAGE_' '{0:04d}'.format(i)+".JPG"
+        if i <= 800:
+            file_path = "/home/pi/sunrise2.0/sunrise/" + 'IMAGE_' '{0:04d}'.format(i)+".JPG"
+        elif i == 800:
+            subprocess.call("touch /home/home/pi/sunrise2.0/sunrise/end.txt", shell = True) 
+        elif 800 < i < (no_of_frames - 800):
+            file_list = sorted(glob("/home/pi/sunrise2.0/dayimages/*.JPG"))
+            if len(file_list) >= 400:
+                subprocess.call(f"rm -r {file_list[0]}")
+        file_path = "/home/pi/sunrise2.0/daytime/" + 'IMAGE_' '{0:04d}'.format(i)+".JPG"
         camera.capture(file_path)
         sleep(delay)
     subprocess.call("touch /home/pi/sunrise2.0/images/end.txt", shell=True)
