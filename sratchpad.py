@@ -1,0 +1,1 @@
+/usr/local/bin/ffmpeg -y -r 30 -f image2 -start_number 0000 -i /mnt/myDisk/shared/dayimages/IMAGE_%04d.JPG -vcodec libx264 -preset slow -crf 17 {video_filename}
