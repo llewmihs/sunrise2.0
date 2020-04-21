@@ -1,5 +1,6 @@
 from glob import glob
 import subprocess
+import os
 
 all_files = sorted(glob("/mnt/myDisk/shared/dayimages/*.JPG"))
 
