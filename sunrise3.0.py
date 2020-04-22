@@ -41,10 +41,14 @@ if __name__ == "__main__":
     full_file_list = sorted(glob(f"{full_folder_path}*.JPG"))
     counter = 0
     for i in full_file_list:
-        subprocess.call(f"sshpass -p {password} scp {i} {localpath}{folder_name}{i[27:]}", shell = True)
+        # upload to the store
+        call(f"sshpass -p {password} scp {i} {localpath}{folder_name}{i[27:]}", shell = True)
+        # rename the file to fit the ffmpeg profile
+        call(f"mv {i} {full_folder_path}IMAGE_{counter:04d}.JPG", shell=True)
         counter +=
     
     # run ffmepg and upload the result
+    
 
 
     # once the programme has ended, reset the cront if it was a sunset
