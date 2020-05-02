@@ -21,6 +21,7 @@ def the_camera(no_of_frames, delay=8):
     camera.start_preview()
     sleep(2) # Camera warm-up time
     for i in range(no_of_frames):
+        subprocess.call(f"mkdir")
         file_path = "/home/pi/sunrise2.0/images/" + 'IMAGE_' '{0:04d}'.format(i)+".JPG"
         camera.capture(file_path)
         sleep(delay)
